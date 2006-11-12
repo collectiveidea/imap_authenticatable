@@ -17,8 +17,8 @@ module CollectiveIdea
         def imap_authenticatable(options = {})
           options = {
             :host => 'mail.example.com',
-            :append_domain => false
-            :allow_new_users => true
+            :append_domain => false,
+            :allow_new_users => true,
           }.merge(options)
           options[:default_domain] ||= options[:host]
           
