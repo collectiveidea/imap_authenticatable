@@ -1,0 +1,6 @@
+bob:
+  username: bob
+  favorite_rails_feature: has_many :through
+sue:
+  username: sue
+  favorite_rails_feature: alias_method_chain
