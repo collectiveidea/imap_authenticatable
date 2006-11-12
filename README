@@ -1,0 +1,29 @@
+IMAPAuthenticatable
+===================
+
+A quick library for authenticating against an IMAP server.
+
+It expects a model with a 'username' column  You must pass a host.
+
+Example:
+
+class User < ActiveRecord::Base
+  imap_authenticatable :host => 'mail.hope.edu'
+  
+  ...
+end
+
+
+other options:
+	:allow_new_users => true/false
+		Alters whether to use find_by_username or find_or_create_by_username.
+		The default is true.
+	:default_domain => 'example.com'
+		What usernames have at the end.
+		Defaults to the :host option.
+	:append_domain => false/true
+		Should we always add or remove the default_domain (with preceding '@) value?
+		The default is false (always remove).
+		
+
+Other options may be added as need arises.
