@@ -51,10 +51,11 @@ module CollectiveIdea
         end
         
         def clean_username(username)
+          username.chomp!('@' + imap_authenicatable_options[:default_domain])
+          
+          # since we chomp! either way, we don't worry about adding it twice
           if imap_authenicatable_options[:append_domain]
             username << '@' << imap_authenicatable_options[:default_domain]
-          else
-            username.chomp!('@' + imap_authenicatable_options[:default_domain])
           end
         end
       end
