@@ -1,6 +1,6 @@
 ActiveRecord::Schema.define(:version => 1) do
   
-  create_table "users", :force => true do |t|
+  create_table "normals", :force => true do |t|
     t.column "username",                :string
     t.column "favorite_rails_feature",  :string
   end

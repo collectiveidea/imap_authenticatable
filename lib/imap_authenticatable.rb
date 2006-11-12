@@ -21,7 +21,7 @@ module CollectiveIdea
             :allow_new_users => true,
           }.merge(options)
           options[:default_domain] ||= options[:host]
-          
+
           write_inheritable_attribute(:imap_authenicatable_options, options)
           
           class_inheritable_reader :imap_authenicatable_options
@@ -51,12 +51,13 @@ module CollectiveIdea
         end
         
         def clean_username(username)
-          username.chomp!('@' + imap_authenicatable_options[:default_domain])
+          username = username.strip.downcase.chomp('@' + imap_authenicatable_options[:default_domain])
           
           # since we chomp! either way, we don't worry about adding it twice
           if imap_authenicatable_options[:append_domain]
             username << '@' << imap_authenicatable_options[:default_domain]
           end
+          username
         end
       end
 

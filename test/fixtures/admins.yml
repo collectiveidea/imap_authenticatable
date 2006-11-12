@@ -1,6 +1,8 @@
 daniel:
+  id: 1
   username: daniel
   active: true
 brandon:
+  id: 2
   username: brandon
   active: false
