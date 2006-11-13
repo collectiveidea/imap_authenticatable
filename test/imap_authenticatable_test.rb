@@ -70,7 +70,10 @@ class IMAPAuthenticatableTest < Test::Unit::TestCase
     assert !Admin.authenticate('brandon', '')
     assert !Admin.authenticate('daniel', 'incorrect')
     assert !Admin.authenticate('daniel@collectiveidea.com', '')
-    assert !Admin.authenticate('newperson', 'nosrepwen')
+    
+    assert_no_difference(Admin, :count) do
+      assert !Admin.authenticate('newperson', 'nosrepwen')
+    end
   end
   
   def test_clean_username
