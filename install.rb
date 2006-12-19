@@ -1,3 +1,1 @@
-# Copy the mock imap.rb to the project's test directory
-require 'fileutils'
-FileUtils.cp(File.join(File.dirname(__FILE__), 'test/mocks/imap.rb'), File.join(File.dirname(__FILE__), '../../../test/mocks/test/'))
+puts "\nAdd the following line to the top of your lib/authenticated_test_helper.rb\n\trequire File.dirname(__FILE__) + '/../vendor/plugins/imap_authenticatable/test/mocks/imap.rb'\n"
