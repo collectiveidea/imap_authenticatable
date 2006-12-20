@@ -95,4 +95,13 @@ class IMAPAuthenticatableTest < Test::Unit::TestCase
     assert_equal 'sam@example.com', SomethingElse.clean_username('sam@example.com')
     assert_equal 'sam@example.com', SomethingElse.clean_username('sam@EXAMPLE.com')
   end
+  
+  def test_email
+    assert_equal 'bob@example.com', normals(:bob).email
+    assert_equal 'sue@example.com', normals(:sue).email
+    
+    assert_equal 'daniel@collectiveidea.com', admins(:daniel).email
+    assert_equal 'brandon@collectiveidea.com',admins(:brandon).email
+    
+  end
 end
