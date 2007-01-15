@@ -130,6 +130,6 @@ class IMAPAuthenticatableTest < Test::Unit::TestCase
     assert_equal 'brandon@collectiveidea.com',admins(:brandon).email
     
     assert_equal 'not_matt@somewhere.else.org', haxors(:matt).email
-    assert_nil haxors(:john).email
+    assert_equal 'john@haxor.xxx', haxors(:john).email
   end
 end
