@@ -64,7 +64,9 @@ module CollectiveIdea
       # Adds instance methods.
       module InstanceMethods
          def email
-           if imap_authenicatable_options[:append_domain]
+           if self[:email]
+             self[:email]
+           elsif imap_authenicatable_options[:append_domain]
              username
            else
              username + '@' + self.imap_authenicatable_options[:default_domain]

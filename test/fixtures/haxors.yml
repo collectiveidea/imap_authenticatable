@@ -1,0 +1,7 @@
+matt:
+  id: 1
+  username: matt
+  email: not_matt@somewhere.else.org
+john:
+  id: 2
+  username: john
