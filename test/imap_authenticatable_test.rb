@@ -34,7 +34,7 @@ class SomethingElse < ActiveRecord::Base
 end
 
 class IMAPAuthenticatableTest < Test::Unit::TestCase
-  fixtures :normals, :admins
+  fixtures :normals, :admins, :haxors
   
   # valid passwords are equal to username.reverse
   
