@@ -81,10 +81,10 @@ class IMAPAuthenticatableTest < Test::Unit::TestCase
   end
   
   def test_successful_haxor_authentication
-    assert_equal admins(:matt), Haxor.authenticate('matt', 'ttam')
-    assert_equal admins(:john), Haxor.authenticate('john', 'nhoj')
-    assert_equal admins(:matt), Haxor.authenticate('matt@haxor.xxx', 'ttam')
-    assert_equal admins(:john), Haxor.authenticate('john@haxor.xxx', 'nhoj')
+    assert_equal haxors(:matt), Haxor.authenticate('matt', 'ttam')
+    assert_equal haxors(:john), Haxor.authenticate('john', 'nhoj')
+    assert_equal haxors(:matt), Haxor.authenticate('matt@haxor.xxx', 'ttam')
+    assert_equal haxors(:john), Haxor.authenticate('john@haxor.xxx', 'nhoj')
     assert_difference(Haxor, :count) do
       assert_kind_of Haxor, Haxor.authenticate('newperson', 'nosrepwen')
     end
