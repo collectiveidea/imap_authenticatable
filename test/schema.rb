@@ -10,4 +10,9 @@ ActiveRecord::Schema.define(:version => 1) do
     t.column "active",        :boolean
   end
   
+  create_table "haxors", :force => true do |t|
+    t.column "username",      :string
+    t.column "email",         :string
+  end
+  
 end

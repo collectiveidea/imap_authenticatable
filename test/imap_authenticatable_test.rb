@@ -23,6 +23,10 @@ class Admin < ActiveRecord::Base
   end
 end
 
+class Haxor < ActiveRecord::Base
+  imap_authenticatable :host => 'mail.haxor.xxx', :default_domain => 'haxor.xxx'
+end
+
 class SomethingElse < ActiveRecord::Base
   imap_authenticatable :host => 'mail.example.com', 
     :default_domain => 'example.com',
@@ -76,6 +80,28 @@ class IMAPAuthenticatableTest < Test::Unit::TestCase
     end
   end
   
+  def test_successful_haxor_authentication
+    assert_equal admins(:matt), Haxor.authenticate('matt', 'ttam')
+    assert_equal admins(:john), Haxor.authenticate('john', 'nhoj')
+    assert_equal admins(:matt), Haxor.authenticate('matt@haxor.xxx', 'ttam')
+    assert_equal admins(:john), Haxor.authenticate('john@haxor.xxx', 'nhoj')
+    assert_difference(Haxor, :count) do
+      assert_kind_of Haxor, Haxor.authenticate('newperson', 'nosrepwen')
+    end
+  end
+  
+  def test_unsuccessful_haxor_authentication
+    assert !Haxor.authenticate('matt', 'mat')
+    assert !Haxor.authenticate('hack', 'hack')
+    assert !Haxor.authenticate('not_matt@somewhere.else.org', 'ttam')
+    assert !Haxor.authenticate('', 'nhoj')
+    
+    assert_no_difference(Haxor, :count) do
+      assert_equal false, Haxor.authenticate('newperson@haxor.com', 'invalid')
+    end
+  end
+  
+  
   def test_clean_username
     assert_equal 'sam', Normal.clean_username('sam')
     assert_equal 'sam', Normal.clean_username('SAM')
@@ -103,5 +129,7 @@ class IMAPAuthenticatableTest < Test::Unit::TestCase
     assert_equal 'daniel@collectiveidea.com', admins(:daniel).email
     assert_equal 'brandon@collectiveidea.com',admins(:brandon).email
     
+    assert_equal 'not_matt@somewhere.else.org', haxors(:matt).email
+    assert_nil, haxors(:john).email
   end
 end
