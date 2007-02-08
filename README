@@ -3,7 +3,7 @@ IMAPAuthenticatable
 
 A quick library for authenticating against an IMAP server.
 
-It expects a model with a 'username' column  You must pass a host.
+It expects a model with a 'username' column (or method). You must pass a host.
 
 Example:
 
@@ -17,7 +17,7 @@ end
 other options:
 	:allow_new_users => true/false
 		Alters whether to use find_by_username or find_or_create_by_username.
-		The default is true.
+		The default is true (find or create).
 	:default_domain => 'example.com'
 		What usernames have at the end.
 		Defaults to the :host option.
@@ -27,3 +27,10 @@ other options:
 		
 
 Other options may be added as need arises.
+
+Testing:
+
+To mock the IMAP login in your tests, add the following line to the top of your test_helper.rb
+  require File.join(File.dirname(__FILE__), '..', 'vendor', 'plugins', 'imap_authenticatable', 'test', 'mocks', 'imap.rb')
+
+This mock makes the valid password the reverse of the username (username.reverse).

@@ -1,1 +1,1 @@
-puts "\nAdd the following line to the top of your lib/authenticated_test_helper.rb\n\trequire File.dirname(__FILE__) + '/../vendor/plugins/imap_authenticatable/test/mocks/imap.rb'\n"
+puts IO.read(File.join(File.dirname(__FILE__), 'README'))
