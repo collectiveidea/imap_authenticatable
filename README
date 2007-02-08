@@ -3,6 +3,8 @@ IMAPAuthenticatable
 
 A quick library for authenticating against an IMAP server.
 
+See http://daniel.collectiveidea.com/blog/tags/imap_authenticatable for more info.
+
 It expects a model with a 'username' column (or method). You must pass a host.
 
 Example:
