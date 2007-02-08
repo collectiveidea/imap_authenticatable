@@ -10,7 +10,7 @@ It expects a model with a 'username' column (or method). You must pass a host.
 Example:
 
 class User < ActiveRecord::Base
-  imap_authenticatable :host => 'mail.hope.edu'
+  imap_authenticatable :host => 'mail.example.com'
   
   ...
 end
