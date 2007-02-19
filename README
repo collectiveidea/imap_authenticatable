@@ -26,9 +26,16 @@ other options:
 	:append_domain => false/true
 		Should we always add or remove the default_domain (with preceding '@) value?
 		The default is false (always remove).
+	:ssl => false/true
+	  Sets whether to connect via SSL (TLS).  You must have OpenSSL installed.
+	  Defaults to false.
+	:port => 143
+	  Sets the port.  The :ssl option will set the port automatically unless you override it.
+	  Defaults to 143 if :ssl => false, 993 if :ssl => true
 		
 
 Other options may be added as need arises.
+
 
 Testing:
 

@@ -19,8 +19,10 @@ module CollectiveIdea
             :host => 'mail.example.com',
             :append_domain => false,
             :allow_new_users => true,
+            :ssl => false,
           }.merge(options)
           options[:default_domain] ||= options[:host]
+          options[:port] ||= options[:ssl] ? 993 : 143 
 
           write_inheritable_attribute(:imap_authenicatable_options, options)
           
