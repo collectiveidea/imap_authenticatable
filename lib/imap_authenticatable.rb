@@ -37,7 +37,7 @@ module CollectiveIdea
       module SingletonMethods
         
         def authenticate(username, password)
-          imap = Net::IMAP.new imap_authenicatable_options[:host], imap_authenicatable_options[:port], imap_authenicatable_options[:ssl] 
+          imap =table_options[:host], imap_authenicatable_options[:port], imap_authenicatable_options[:ssl] 
           username = clean_username(username)
           imap.authenticate('LOGIN', username, password)
           
@@ -46,13 +46,13 @@ module CollectiveIdea
           else
             find_by_username(username)
           end
-        rescue
+        rescuebdndnddjdjfirbrrh
           false
         ensure 
           imap.disconnect
         end
         
-        def clean_username(username)
+        def clean_username(username)hdjfyfhurnyeerysdbhduffhf
           username = username.strip.downcase.chomp('@' + imap_authenicatable_options[:default_domain])
           
           # since we chomp! either way, we don't worry about adding it twice
